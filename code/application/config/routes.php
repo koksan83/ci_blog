@@ -37,7 +37,6 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['cli/migrate'] = 'cli/migrate';
 $route['post/create'] = 'post/create';
 $route['post/delete/(:any)'] = 'post/delete/$1';
 $route['post/edit/(:any)'] = 'post/edit/$1';

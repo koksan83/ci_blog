@@ -1,53 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Sample Blog Sign In</title>
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/blog.css"); ?>" />
-
-
-  </head>
-  <body>
     <?php
     echo validation_errors();
     $this->load->helper('form');
     ?>
-    <div class="container blog-form">
-      <?php 
-      echo form_open("post/edit/{$post['slug']}");
-      echo form_hidden('slug', $post['slug']);
-      echo form_hidden('author', $this->session->userdata['username']);
+    <div class='container'>
+      <div class="col-sm-4">
+        <h2>Edit Post</h2>
+        <?php 
+        echo form_open("post/edit/{$post['slug']}");
+        echo form_hidden('slug', $post['slug']);
+        echo form_hidden('author', $this->session->userdata['username']);
 
 
-      $data = array(
-                    'name'            => 'title',
-                    'maxlength'       => '100',
-                    'size'            => '100',
-                    'placeholder'     => 'Title',
-                    'value'           => $post['title']
-        );
-      ?>
-    
-      <div><?php echo form_input($data); ?></div>
-      <?php
-      $data = array(
-                    'name'  => 'content',
-                    'placeholder'     => 'Content',
-                    'value'           => $post['content']
-        );
-      ?>
-      <div><?php echo form_textarea($data); ?></div>
-      <div><?php echo form_submit('submit', 'Submit Post');?></div>
-      <?php echo form_close(); ?>
+        $data = array(
+                      'name'        => 'title',
+                      'maxlength'   => '100',
+                      'size'        => '100',
+                      'placeholder' => 'Title',
+                      'value'       => $post['title'],
+                      'class'       => 'form-control'
+          );
+        ?>
+        
+        <div class="form-group"><?php echo form_input($data); ?></div>
+        <?php
+        $data = array(
+                      'name'  => 'content',
+                      'placeholder'     => 'Content',
+                      'value'           => $post['content'],
+                      'class'       => 'form-control'
+          );
+        ?>
+        <div class="form-group"><?php echo form_textarea($data); ?></div>
+
+        <?php
+          $attributes = array(
+                      'class'    => 'btn btn-default',
+                      'type'     => 'submit'
+            );
+          echo form_button($attributes, 'Edit Post');
+          echo form_close();
+
+        ?>
+      </div>
+    </div>
+
 
       <footer class="blog-footer">
         <p><a href="/">Back to main</a></p>
       </footer>
-    </div>
+
 
     
     <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>

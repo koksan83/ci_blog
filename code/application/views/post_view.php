@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sample Blog</title>
 
     <!-- Bootstrap core CSS -->
@@ -18,7 +19,7 @@
 
       <div class="row">
         <div class="col-sm-8 blog-main">
-          <div class="blog-post">
+          <div>
             <h2 class="blog-post-title"><?php echo $post['title']; ?></h2>
             <?php
             if (isset($this->session->userdata['username']))
@@ -35,16 +36,17 @@
                 echo form_close('');
               }           
             }
-
-
-
             ?>
+           
+
             <p class="blog-post-meta"><?php echo $post['timestamp']?> by <a href="#"><?php echo $post['author']; ?></a></p>
 
-            <p class="blog-post"><?php echo nl2br($post['content']); ?></p>
+          <div class="blog-post">
+            <p><?php echo nl2br($post['content']); ?></p>
           </div><!-- /.blog-post -->
-      </div><!-- /.row -->
 
+        </div>
+      </div><!-- /.row -->
     </div><!-- /.container -->
 
     <footer class="blog-footer">

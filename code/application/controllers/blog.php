@@ -9,6 +9,7 @@ class Blog extends CI_Controller
 
     if (isset($this->session->userdata['logged_in']))
     {
+
       $this->load->view('top_menu_logged_view');
     }
     else
@@ -21,7 +22,6 @@ class Blog extends CI_Controller
   {
      $data['posts'] = $this->PostModel->get_post();
      $this->load->view('blog_view', $data);
-
   }
 
   public function post($slug = FALSE)

@@ -14,42 +14,61 @@
     <?php
     echo validation_errors();
     $this->load->helper('form');
-    echo form_open('user/register');
-
-    $data = array(
-                  'name'  => 'username',
-                  'maxlength' => '20',
-                  'size'      => '20',
-                  'placeholder'     => 'Username'
-      );
     ?>
-    <div class="container blog-form">
-      <div><?php echo form_input($data); ?></div>
+    <div class='container'>
+      <div class="col-sm-4">
+      <?php
+      $attributes = array('role' => 'form'); 
+      echo form_open('user/register', $attributes);
+
+      $data = array(
+                    'name'  => 'username',
+                    'maxlength' => '20',
+                    'size'      => '20',
+                    'placeholder'     => 'Username',
+                    'class'       => 'form-control'
+        );
+      ?>
+      <h2>Sign Up</h2>
+      <?php echo form_input($data); ?>
+
       <?php
         $data = array(
                       'name'  => 'password',
                       'maxlength' => '20',
                       'size'      => '20',
-                      'placeholder'     => 'Password'
+                      'placeholder'     => 'Password',
+                      'class'       => 'form-control'
           );
       ?>
-      <div><?php echo form_password($data); ?></div>
-          <?php
-            $data = array(
-            'name'  => 'password_cfm',
-            'maxlength' => '20',
-            'size'      => '20',
-            'placeholder'     => 'Confirm password'
-          );
-          ?>
-      <div><?php echo form_password($data); ?></div>
-      <div><?php echo form_submit('submit', 'Sign Up');?></div>
-      <?php echo form_close(); ?>
+        <?php echo form_password($data); ?>
+            <?php
+              $data = array(
+              'name'  => 'password_cfm',
+              'maxlength' => '20',
+              'size'      => '20',
+              'placeholder'     => 'Confirm password',
+              'class'       => 'form-control'
+            );
+            ?>
+        <?php echo form_password($data); ?>
 
-      <footer class="blog-footer">
-        <p><a href="/">Back to main</a></p>
-      </footer>      
+        <?php
+        $attributes = array(
+                    'class'    => 'btn btn-default',
+                    'type'     => 'submit'
+          );
+        echo form_button($attributes, 'Sign Up');
+        echo form_close();
+        ?>
+
     </div>
+    </div>
+
+    <footer class="blog-footer">
+      <p><a href="/">Back to main</a></p>
+    </footer>   
+    
     <script type="text/javascript" src="<?php echo base_url("assets/js/jquery-1.11.3.min.js"); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
   </body>

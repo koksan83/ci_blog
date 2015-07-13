@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sample Blog</title>
 
     <!-- Bootstrap core CSS -->
@@ -12,24 +13,23 @@
     <div class="container">
 
       <div class="blog-header">
-        <h1 class="blog-title">Sample Blog</h1>
+        <h3 class="blog-title">Sample Blog</h3>
         <p class="lead blog-description">Powered by CodeIgniter, Homestead and Bootstrap</p>
       </div>
+ 
+        <div class="row">
+          <div class="col-sm-8 blog-main">
+            <?php foreach ($posts as $post): ?>
+              <div class="blog-post">
+                <div><a href="post/<?php echo $post['slug'] ?>"><h2 class="blog-post-title"><?php echo $post['title']?></h2></a></div>
+                <div class="blog-post-meta"><?php echo $post['timestamp']?> by <a href="#"><?php echo $post['author']; ?></a></div>
 
-      <div class="row">
+                <div class="blog-post"><article><?php echo nl2br($post['content']); ?></article></div>
+              </div><!-- /.blog-post -->
 
-        <div class="col-sm-8 blog-main">
-          <?php foreach ($posts as $post): ?>
-            <div class="blog-post">
-              <a href="post/<?php echo $post['slug'] ?>"><h2 class="blog-post-title"><?php echo $post['title']?></h2></a>
-              <p class="blog-post-meta"><?php echo $post['timestamp']?> by <a href="#"><?php echo $post['author']; ?></a></p>
-
-              <p class="blog-post"><?php echo nl2br($post['content']); ?></p>
-            </div><!-- /.blog-post -->
-
-          <?php endforeach ?>
-      </div><!-- /.row -->
-
+            <?php endforeach ?>
+          </div>
+        </div>
     </div><!-- /.container -->
 
     <footer class="blog-footer">

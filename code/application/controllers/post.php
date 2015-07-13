@@ -85,7 +85,11 @@ class Post extends CI_Controller
         }
       }
 
-      redirect("post/$slug");
+      else
+      {
+        redirect("post/$slug");
+      }
+      
     }
   }
 
